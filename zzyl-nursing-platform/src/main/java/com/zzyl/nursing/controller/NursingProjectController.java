@@ -1,6 +1,7 @@
 package com.zzyl.nursing.controller;
 
 import com.zzyl.common.core.domain.R;
+import com.zzyl.nursing.vo.NursingProjectVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -113,4 +114,13 @@ public class NursingProjectController extends BaseController
     {
         return toAjax(nursingProjectService.deleteNursingProjectByIds(ids));
     }
+
+    @GetMapping("/all")
+    @ApiOperation(value = "查询所有护理项目")
+    public AjaxResult listAll()
+    {
+        List<NursingProjectVo> list = nursingProjectService.selectAll();
+        return success(list);
+    }
+
 }

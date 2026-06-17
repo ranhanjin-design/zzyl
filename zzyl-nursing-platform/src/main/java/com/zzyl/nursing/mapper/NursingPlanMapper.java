@@ -1,15 +1,20 @@
 package com.zzyl.nursing.mapper;
 
-import java.util.List;
-import com.zzyl.nursing.domain.NursingPlan;
 
+import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zzyl.nursing.domain.NursingPlan;
+import com.zzyl.nursing.domain.NursingProjectPlan;
+// 关键修改：使用 MyBatis 的注解
+import com.zzyl.nursing.vo.NursingProjectPlanVo;
+import org.apache.ibatis.annotations.Param;
 /**
  * 护理计划Mapper接口
  * 
  * @author ranhanjin
  * @date 2026-06-15
  */
-public interface NursingPlanMapper 
+public interface NursingPlanMapper extends BaseMapper<NursingPlan>
 {
     /**
      * 查询护理计划
@@ -53,9 +58,11 @@ public interface NursingPlanMapper
 
     /**
      * 批量删除护理计划
-     * 
+     *
      * @param ids 需要删除的数据主键集合
      * @return 结果
      */
     public int deleteNursingPlanByIds(Long[] ids);
+//    int batchInsert(@Param("list") List<NursingProjectPlan> projectPlans, @Param("planId") Long planId);
+
 }
