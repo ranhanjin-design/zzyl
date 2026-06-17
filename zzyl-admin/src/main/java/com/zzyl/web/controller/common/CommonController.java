@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.zzyl.oss.AliyunOSSOperator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,10 @@ public class CommonController
 
     @Autowired
     private ServerConfig serverConfig;
+
+    @Autowired
+    private AliyunOSSOperator aliyunOSSOperator;
+
 
     private static final String FILE_DELIMETER = ",";
 
@@ -80,18 +86,19 @@ public class CommonController
             // 上传文件路径
             String filePath = RuoYiConfig.getUploadPath();
             // 上传并返回新文件名称
-            String fileName = FileUploadUtils.upload(filePath, file);
-            String url = serverConfig.getUrl() + fileName;
+//            String fileName = FileUploadUtils.upload(filePath, file);
+            String url = aliyunOSSOperator.upload(file.getBytes(), file.getOriginalFilename());
+
+//            String url = serverConfig.getUrl() + fileName;
             AjaxResult ajax = AjaxResult.success();
             ajax.put("url", url);
-            ajax.put("fileName", fileName);
-            ajax.put("newFileName", FileUtils.getName(fileName));
+            ajax.put("fileName", url);
+            ajax.put("newFileName", FileUtils.getName(url));
             ajax.put("originalFilename", file.getOriginalFilename());
             return ajax;
-        }
-        catch (Exception e)
-        {
-            return AjaxResult.error(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace(); // 这行代码会把最详细的错误（如：找不到Bucket、权限拒绝、连接超时）打印出来
+            return AjaxResult.error("上传失败: " + e.getMessage());
         }
     }
 
