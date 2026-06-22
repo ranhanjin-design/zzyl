@@ -1,22 +1,22 @@
 package com.zzyl.nursing.service;
 
 import java.util.List;
-
-import com.zzyl.nursing.Dto.NursingPlanDto;
 import com.zzyl.nursing.domain.NursingPlan;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.zzyl.nursing.dto.NursingPlanDto;
 import com.zzyl.nursing.vo.NursingPlanVo;
 
 /**
  * 护理计划Service接口
  * 
- * @author ranhanjin
- * @date 2026-06-15
+ * @author alexis
+ * @date 2025-06-02
  */
-public interface INursingPlanService
+public interface INursingPlanService extends IService<NursingPlan>
 {
     /**
      * 查询护理计划
-     *
+     * 
      * @param id 护理计划主键
      * @return 护理计划
      */
@@ -40,7 +40,7 @@ public interface INursingPlanService
 
     /**
      * 修改护理计划
-     *
+     * 
      * @param dto 护理计划
      * @return 结果
      */
@@ -62,4 +62,10 @@ public interface INursingPlanService
      */
     public int deleteNursingPlanById(Long id);
 
+
+    /**
+     * 查询所有护理计划
+     * @return 护理计划列表
+     */
+    List<NursingPlan> getAllNursingPlans();
 }

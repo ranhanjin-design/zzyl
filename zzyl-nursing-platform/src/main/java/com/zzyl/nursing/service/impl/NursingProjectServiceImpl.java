@@ -1,5 +1,6 @@
 package com.zzyl.nursing.service.impl;
 
+import java.util.Arrays;
 import java.util.List;
 import com.zzyl.common.utils.DateUtils;
 import com.zzyl.nursing.vo.NursingProjectVo;
@@ -9,13 +10,12 @@ import com.zzyl.nursing.mapper.NursingProjectMapper;
 import com.zzyl.nursing.domain.NursingProject;
 import com.zzyl.nursing.service.INursingProjectService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import java.util.Arrays;
 
 /**
  * 护理项目Service业务层处理
- *
- * @author doran
- * @date 2026-06-16
+ * 
+ * @author alexis
+ * @date 2025-06-02
  */
 @Service
 public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper, NursingProject> implements INursingProjectService
@@ -25,7 +25,7 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
 
     /**
      * 查询护理项目
-     *
+     * 
      * @param id 护理项目主键
      * @return 护理项目
      */
@@ -37,7 +37,7 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
 
     /**
      * 查询护理项目列表
-     *
+     * 
      * @param nursingProject 护理项目
      * @return 护理项目
      */
@@ -49,7 +49,7 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
 
     /**
      * 新增护理项目
-     *
+     * 
      * @param nursingProject 护理项目
      * @return 结果
      */
@@ -61,7 +61,7 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
 
     /**
      * 修改护理项目
-     *
+     * 
      * @param nursingProject 护理项目
      * @return 结果
      */
@@ -73,7 +73,7 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
 
     /**
      * 批量删除护理项目
-     *
+     * 
      * @param ids 需要删除的护理项目主键
      * @return 结果
      */
@@ -85,7 +85,7 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
 
     /**
      * 删除护理项目信息
-     *
+     * 
      * @param id 护理项目主键
      * @return 结果
      */
@@ -96,17 +96,12 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
     }
 
     /**
-     * 获取所有护理项目
+     * 查询所有护理项目
      *
      * @return 护理项目列表
      */
-    /**
-     * 查询所有护理项目
-     *
-     * @return
-     */
     @Override
-    public List<NursingProjectVo> selectAll() {
-        return nursingProjectMapper.selectAll();
+    public List<NursingProjectVo> getAll() {
+        return nursingProjectMapper.getAll();
     }
 }

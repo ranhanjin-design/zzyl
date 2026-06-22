@@ -1,4 +1,4 @@
-package com.zzyl.nursing.Dto;
+package com.zzyl.nursing.dto;
 
 import com.zzyl.nursing.domain.NursingProjectPlan;
 import io.swagger.annotations.ApiModelProperty;
